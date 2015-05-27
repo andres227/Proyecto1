@@ -1,0 +1,64 @@
+import sys, pygame
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self,image):
+        self.imagen=imagen
+        self.rect=delf.imagen.get_rect()
+        self.rect.top,self.rect.left=300,200
+
+    def mover(self,px,py):
+        pass
+    def update(self,px,py):
+        superficie.blit(self.imagen,self.rect)
+
+def main():
+    import sys, pygame 
+
+pygame.init()
+pantalla=pygame.display.set_mode((700,700))
+pygame.display.set_caption("Cowboy Shooter Deluxe")
+salir=False
+reloj1=pygame.time.Clock()
+imagen1=pygame.image.load("domo.png")
+(x,y)= (100,100)
+
+#vida del vaquero
+vidav = 100
+#vida de los enemigos
+vidae = 100
+#esta es la posicion inicial del vaquero
+x = 100
+y = 100
+#aqui es cuando le disparan al vaquero
+disparoe = vidav - 100
+
+#aqui es cuando el vaquero dispara
+def vaquerod():
+    a = vidae - 100
+    print ('Ha muerto un enemigo', a)
+    if a == vidae:
+        print ('ha fallado el tiro')
+
+#aqui es cuando le disparan al vaquero
+def enemigod():
+    b = vidav - 100
+    print ('has muerto', b)
+    if b == vidav:
+        print ('te has salvado')
+
+def mover():
+    c = x + 5
+    print ('esta es su nueva posicion')
+
+while salir!=True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            salir=True
+
+    reloj1.tick(15)
+    pantalla.fill((0, 0, 0))
+    pantalla.blit(imagen1,(x,y))
+    pygame.display.update()
+
+   
+pygame.quit()
