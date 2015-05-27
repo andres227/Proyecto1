@@ -29,6 +29,12 @@ vidae = 100
 #esta es la posicion inicial del vaquero
 x = 100
 y = 100
+#posicion inicial del enemigo1
+e = 200
+h = 100
+#posicion inicial del enemigo2
+e = 205
+h = 100
 #aqui es cuando le disparan al vaquero
 disparoe = vidav - 100
 
@@ -46,9 +52,23 @@ def enemigod():
     if b == vidav:
         print ('te has salvado')
 
-def mover():
-    c = x + 5
+def moverderecha():
+    d = x + 10
     print ('esta es su nueva posicion')
+    
+def moverizquierda():
+    i = x - 10
+    print ('esta es su nueva posicion')
+    
+def saltar():
+    s = y + 10 
+    print ('ha saltado')
+    
+def retroceder():
+
+def jugar(espacio, programa):
+    
+    
 
 while salir!=True:
     for event in pygame.event.get():
