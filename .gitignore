@@ -4,6 +4,7 @@ def saludoinicial():
       "que el vaquero tiene que acabar con los enemigos antes de que lo maten a el"
       "" )
     print("tienes que moverte por el mapa y evitar que las balas de los enemigos")
+    print("empecemos")
 
 def jugar(cowboy_shooter_deluxe):
 
@@ -13,19 +14,6 @@ def jugar(cowboy_shooter_deluxe):
     print("Inicia en la posicion inicial del duelo")
 
     lineas = cowboy_shooter_deluxe.split("\n")
-
-    for paso in lineas:
-        if paso == "saltar":
-            pos = (pos[0]+1,pos[1])
-        elif paso == "agacharse":
-            pos = (pos[0]-1,pos[1])
-        elif paso == "derecha":
-            pos = (pos[0], pos[1]+1)
-        elif paso == "izquierda":
-            pos = (pos[0], pos[1]-1)
-
-    if pos[0] < 0 or pos[1] < 0:
-        print("error")
 
 #vida del vaquero
 vidav = 100
@@ -50,8 +38,23 @@ vidae4 = 0
 #esta es la posicion inicial del vaquero
 x = 0
 y = 1
-#aqui es cuando le disparan al vaquero
-disparoe = vidav - 100
+
+#Estos son los comandos basicos de movimiento
+def saltar():
+    pos = y + 1
+    print("ha saltado")
+
+def agacharse():
+    pos = y - 1
+    print("se ha agachado")
+
+def derecha():
+    pos = x + 1
+    print("se ha movido un paso a la derecha")
+
+def izquierda():
+    pos = x - 1
+    print("se ha movido un paso a la izquierda")
 
 #aqui es cuando el vaquero dispara
 def vaquerod():
@@ -86,7 +89,7 @@ def balacera():
 
 #cuando la salud del vaquero esta por abajo de 100 se cura automaticamente
 def curarse():
-    for i in [25, 50,75]:
+    for i in [25,50,75]:
         h = vidav3 + 75
     print("salud restaurada", h)
 
@@ -101,4 +104,13 @@ def gamecleared():
     n = vidae - vidae2 - vidae3 - vidae4 - 25
     print("esta es la salud de los enemigos", n)
     print("Congratulations, you has cleared the game")
+
+def leertxtenlista():
+    archi=open('2.txt','r')
+    lineas=archi.readlines()
+    for li in lineas:
+        print li
+    archi.close()
+
+leertxtenlista()
 
