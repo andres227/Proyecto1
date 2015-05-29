@@ -1,84 +1,104 @@
-import sys, pygame
+__author__ = 'AndresF'
+def saludoinicial():
+    print("Hola este es el cowboy shooter deluxe y consiste en "
+      "que el vaquero tiene que acabar con los enemigos antes de que lo maten a el"
+      "" )
+    print("tienes que moverte por el mapa y evitar que las balas de los enemigos")
 
-class Player(pygame.sprite.Sprite):
-    def __init__(self,image):
-        self.imagen=imagen
-        self.rect=delf.imagen.get_rect()
-        self.rect.top,self.rect.left=300,200
+def jugar(cowboy_shooter_deluxe):
 
-    def mover(self,px,py):
-        pass
-    def update(self,px,py):
-        superficie.blit(self.imagen,self.rect)
+    pos = (100,0)
+    pos = 0
 
-def main():
-    import sys, pygame 
+    print("Inicia en la posicion inicial del duelo")
 
-pygame.init()
-pantalla=pygame.display.set_mode((700,700))
-pygame.display.set_caption("Cowboy Shooter Deluxe")
-salir=False
-reloj1=pygame.time.Clock()
-imagen1=pygame.image.load("domo.png")
-(x,y)= (100,100)
+    lineas = cowboy_shooter_deluxe.split("\n")
+
+    for paso in lineas:
+        if paso == "saltar":
+            pos = (pos[0]+1,pos[1])
+        elif paso == "agacharse":
+            pos = (pos[0]-1,pos[1])
+        elif paso == "derecha":
+            pos = (pos[0], pos[1]+1)
+        elif paso == "izquierda":
+            pos = (pos[0], pos[1]-1)
+
+    if pos[0] < 0 or pos[1] < 0:
+        print("error")
 
 #vida del vaquero
 vidav = 100
+#vida del vaquero despues de 1 tiro
+vidav1 = 75
+#vida del vaquero despues de 2 tiros
+vidav2 = 50
+#vida del vaquero despues de 3 tiros
+vidav3 = 25
+#vida del vaquero despues de 4 tiros
+vidav4 = 0
 #vida de los enemigos
 vidae = 100
+#vida de los enemigos despues de 1 tiro
+vidae1 = 75
+#vida de los enemigos depues de 2 tirps
+vidae2 = 50
+#vida de los enemigos despues de 3 tiros
+vidae3 = 25
+#vida de los enemigos despues 4 tiros
+vidae4 = 0
 #esta es la posicion inicial del vaquero
-x = 100
-y = 100
-#posicion inicial del enemigo1
-e = 200
-h = 100
-#posicion inicial del enemigo2
-e = 205
-h = 100
+x = 0
+y = 1
 #aqui es cuando le disparan al vaquero
 disparoe = vidav - 100
 
 #aqui es cuando el vaquero dispara
 def vaquerod():
-    a = vidae - 100
-    print ('Ha muerto un enemigo', a)
-    if a == vidae:
-        print ('ha fallado el tiro')
+    a = vidae - 25
+    print ("un enemigo ha sido herido")
+
+#aqui cuando el vaquero falla el tiro
+def vaquerof():
+    c = vidae
+    print ("ha fallado el tiro")
 
 #aqui es cuando le disparan al vaquero
 def enemigod():
-    b = vidav - 100
-    print ('has muerto', b)
-    if b == vidav:
-        print ('te has salvado')
+    b = vidav - 25
+    print ("has sido herido")
 
-def moverderecha():
-    d = x + 10
-    print ('esta es su nueva posicion')
-    
-def moverizquierda():
-    i = x - 10
-    print ('esta es su nueva posicion')
-    
-def saltar():
-    s = y + 10 
-    print ('ha saltado')
-    
-def retroceder():
+#aqui es cuando el enemigo del vaquero falla el tiro
+def enemigof():
+    d = vidav
+    print ("te has salvado")
 
-def jugar(espacio, programa):
-    
-    
+#hay fuego cruzado
+def fuegoc():
+    e = vidav + vidae
+    print ("hay fuego cruzado")
 
-while salir!=True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            salir=True
+#cuando la salud de ambos esta en 100 el combate sigue
+def balacera():
+    while vidae == 100:
+        if vidav == 100:
+            print("el combate no se ha acabado")
 
-    reloj1.tick(15)
-    pantalla.fill((0, 0, 0))
-    pantalla.blit(imagen1,(x,y))
-    pygame.display.update()
+#cuando la salud del vaquero esta por abajo de 100 se cura automaticamente
+def curarse():
+    for i in [25, 50,75]:
+        h = vidav3 + 75
+    print("salud restaurada", h)
 
-   
-pygame.quit()
+#aqui muere el vaquero y se acaba el juego
+def gameover():
+    m = vidav - vidav2 - vidav3 - vidav4 - 25
+    print ("esta es tu salud",m)
+    print ("Game Over")
+
+#aqui se gano el juego
+def gamecleared():
+    n = vidae - vidae2 - vidae3 - vidae4 - 25
+    print("esta es la salud de los enemigos", n)
+    print("Congratulations, you has cleared the game")
+
